@@ -7,7 +7,7 @@ resource "aws_route53_record" "mail" {
   name    = var.mail_sub_domain_name
   type    = "A"
   ttl     = 300
-  records = [aws_instance.mail_server[0].public_ip]
+  records = aws_instance.mail_server.*.public_ip
 }
 
 resource "aws_route53_record" "web" {
@@ -15,5 +15,4 @@ resource "aws_route53_record" "web" {
   name    = var.web_sub_domain_name
   type    = "A"
   ttl     = 300
-  records = [aws_instance.web_server[0].public_ip]
-}
+  records = aws_instance.web_server.*.public_ip
