@@ -16,3 +16,4 @@ resource "aws_route53_record" "web" {
   type    = "A"
   ttl     = 300
   records = aws_instance.web_server.*.public_ip
+}
